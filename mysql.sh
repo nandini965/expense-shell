@@ -16,4 +16,4 @@ systemctl enable mysqld &>>$log_file
 systemctl start mysqld &>>$log_file
 
 func_print_head "add user and password"
-mysql_secure_installation --set-root-pass $mysql_root_password &>>$log_file
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$log_file
