@@ -1,6 +1,7 @@
 script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
+mysql_root_password=$1
 
 func_print_head "disable nodejs"
 dnf module disable nodejs -y
@@ -43,5 +44,5 @@ dnf install mysql -y &>>$log_file
 func_stat_check $?
 
 func_print_head "load schema"
-mysql -h 172.31.42.166 -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$log_file
+mysql -h 172.31.42.166 -uroot -p"${mysql_root_password}" < /app/schema/backend.sql &>>$log_file
 func_stat_check $?
