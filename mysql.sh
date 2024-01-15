@@ -1,4 +1,10 @@
+script=$(realpath "$0")
+script_path=$(dirname "$script")
+source ${script_path}/common.sh
 mysql_root_password = $1
+
+if [ -z "${mysql_root_password}" ]; then
+  echo Input mysql root password is missing
 func_print_head "disable mysql"
 dnf module disable mysql -y &>>$log_file
 
@@ -11,4 +17,3 @@ systemctl start mysqld &>>$log_file
 
 func_print_head "add user and password"
 mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$log_file
-mysql -uroot -pExpenseApp@1 &>>$log_file
