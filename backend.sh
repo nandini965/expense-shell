@@ -45,5 +45,5 @@ dnf install mysql -y &>>$log_file
 func_stat_check $?
 
 func_print_head "load schema"
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$log_file
+mysql -h 172.31.42.166 -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$log_file
 func_stat_check $?
