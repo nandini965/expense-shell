@@ -16,6 +16,3 @@ else
    exit 1
 fi
 }
-func_app_prereq() {
-
-}
