@@ -44,16 +44,16 @@ func_print_head "copy service file"
 cp ${script_path}/backend.service /etc/systemd/system/backend.service &>>$log_file
 func_stat_check $?
 
-func_print_head "restart backend"
-systemctl daemon-reload
-systemctl enable backend &>>$log_file
-systemctl start backend &>>$log_file
-func_stat_check $?
-
 func_print_head "install mysql"
 dnf install mysql -y &>>$log_file
 func_stat_check $?
 
 func_print_head "load schema"
 mysql -h 172.31.47.34 -uroot -p"${mysql_root_password}" < /app/schema/backend.sql &>>$log_file
+func_stat_check $?
+
+func_print_head "restart backend"
+systemctl daemon-reload
+systemctl enable backend &>>$log_file
+systemctl restart backend &>>$log_file
 func_stat_check $?
