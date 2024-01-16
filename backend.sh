@@ -17,11 +17,12 @@ dnf module enable nodejs:18 -y &>>$log_file
 dnf install nodejs -y &>>$log_file
 func_stat_check $?
 
+ func_print_head "add application user"
+ id ${app_user} &>>/tmp/expense.log
 if [ $? -ne 0 ]; then
-func_print_head "add  application user"
-useradd ${app_user} &>>$log_file
-fi
-func_stat_check $?
+   useradd ${app_user} &>>/tmp/expense.log
+ fi
+ func_stat_check $?
 
 func_print_head "create application directory"
 mkdir /app &>>$log_file
