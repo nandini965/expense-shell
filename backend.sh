@@ -34,6 +34,7 @@ func_stat_check $?
 func_print_head "unzip app directory"
 unzip /tmp/backend.zip
 
+func_print_head "create app directory"
 cd /app &>>$log_file
 npm install &>>$log_file
 func_stat_check $?
