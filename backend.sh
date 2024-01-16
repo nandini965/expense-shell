@@ -39,6 +39,8 @@ cd /app &>>$log_file
 npm install &>>$log_file
 func_stat_check $?
 
+CP ${script_path}/backend.service /etc/system/systemd/backend.service &>>$log_file
+
 func_print_head "restart backend"
 systemctl daemon-reload
 systemctl enable backend &>>$log_file
