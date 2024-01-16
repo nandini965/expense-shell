@@ -42,6 +42,7 @@ func_stat_check $?
 func_print_head "copy service file"
 cp ${script_path}/backend.service /etc/systemd/system/backend.service &>>$log_file
 func_stat_check $?
+
 func_print_head "restart backend"
 systemctl daemon-reload
 systemctl enable backend &>>$log_file
