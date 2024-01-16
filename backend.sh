@@ -32,9 +32,8 @@ func_print_head "create application user "
 cd /app &>>$log_file
 func_stat_check $?
 func_print_head "unzip app directory"
-if [ $? -ne 0 ]; then
 unzip /tmp/backend.zip
-fi
+
 cd /app &>>$log_file
 npm install &>>$log_file
 func_stat_check $?
