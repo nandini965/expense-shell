@@ -29,11 +29,10 @@ mkdir /app &>>$log_file
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip &>>$log_file
 func_stat_check $?
 
-func_print_head "create application user "
-cd /app &>>$log_file
-func_stat_check $?
 func_print_head "unzip app directory"
+cd /app &>>$log_file
 unzip /tmp/backend.zip &>>$log_file
+func_stat_check $?
 
 func_print_head "create app directory"
 cd /app &>>$log_file
