@@ -9,7 +9,7 @@ exit 1
 fi
 
 func_print_head "disable nodejs"
-dnf module disable nodejs -y
+dnf module disable nodejs -y &>>$log_file
 func_stat_check $?
 
 func_print_head "install nodejs"
@@ -39,8 +39,9 @@ cd /app &>>$log_file
 npm install &>>$log_file
 func_stat_check $?
 
-CP ${script_path}/backend.service /etc/systemd/system/backend.service &>>$log_file
-
+func_print_head "copy service file"
+cp ${script_path}/backend.service /etc/systemd/system/backend.service &>>$log_file
+func_stat_check $?
 func_print_head "restart backend"
 systemctl daemon-reload
 systemctl enable backend &>>$log_file
