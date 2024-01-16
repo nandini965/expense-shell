@@ -5,6 +5,7 @@ mysql_root_password=$1
 
 if [ -z "${mysql_root_password}" ]; then
   echo Input mysql root password is missing
+  exit 1
   fi
 func_print_head "disable mysql"
 dnf module disable mysql -y &>>$log_file
