@@ -3,6 +3,11 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 mysql_root_password=$1
 
+if [ -z "$mysql_root_password" ]; then
+echo input mysql_root_password is missing
+exit 1
+fi
+
 func_print_head "disable nodejs"
 dnf module disable nodejs -y
 func_stat_check $?
@@ -26,9 +31,10 @@ func_stat_check $?
 func_print_head "create application user "
 cd /app &>>$log_file
 func_stat_check $?
-
 func_print_head "unzip app directory"
+if [ $? -ne 0 ]; then
 unzip /tmp/backend.zip
+fi
 cd /app &>>$log_file
 npm install &>>$log_file
 func_stat_check $?
