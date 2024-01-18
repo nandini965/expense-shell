@@ -55,7 +55,7 @@ dnf install mysql -y &>>$log_file
 func_stat_check $?
 
 func_print_head "load schema"
-mysql -h 172.31.47.34 -uroot -p"${mysql_root_password}" < /app/schema/backend.sql &>>$log_file
+mysql -h mysql.rdevopsb72.store -uroot -p"${mysql_root_password}" < /app/schema/backend.sql &>>$log_file
 func_stat_check $?
 
 

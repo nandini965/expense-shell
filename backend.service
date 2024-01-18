@@ -1,6 +1,6 @@
 [Service]
 User=expense
-Environment=DB_HOST="172.31.47.34"
+Environment=DB_HOST="mysql.rdevops72.store"
 ExecStart=/bin/node /app/index.js
 SyslogIdentifier=backend
 
