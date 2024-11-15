@@ -7,8 +7,6 @@ if [ -z "$mysql_root_password" ]; then
 echo input mysql_root_password is missing
 exit 1
 fi
-
-
 func_print_head "install mysql"
 dnf install mysql-server -y &>>$log_file
 func_stat_check $?
@@ -19,5 +17,5 @@ systemctl start mysqld &>>$log_file
 func_stat_check $?
 
 func_print_head "add user and password"
-mysql_secure_installation --set-root-pass "${mysql_root_password}" &>>$log_file
+mysql_secure_installation --set-root-pass "$mysql_root_password" &>>$log_file
 func_stat_check $?
