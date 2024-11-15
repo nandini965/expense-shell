@@ -3,10 +3,10 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 mysql_root_password=$1
 
-if [ -z "$mysql_root_password" ]; then
-echo input mysql_root_password is missing
-exit 1
-fi
+if [ -z "${mysql_root_password}" ]; then
+  echo Input mysql root password is missing
+  exit 1
+  fi
 
 func_print_head "disable nodejs"
 dnf module disable nodejs -y &>>$log_file
