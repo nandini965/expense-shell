@@ -7,7 +7,7 @@ dnf install nginx -y &>>$log_file
 func_stat_check $?
 
 func_print_head " copy configuration file "
-cp roboshop.conf /etc/nginx/default.d/roboshop.conf &>>$log_file
+cp expense.conf /etc/nginx/default.d/expense.conf &>>$log_file
  func_stat_check $?
 
  func_print_head "remove application user"
