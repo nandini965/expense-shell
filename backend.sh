@@ -13,7 +13,7 @@ dnf module disable nodejs -y &>>$log_file
 func_stat_check $?
 
 func_print_head "install nodejs"
-dnf module enable nodejs:18 -y &>>$log_file
+dnf module enable nodejs:20 -y &>>$log_file
 dnf install nodejs -y &>>$log_file
 func_stat_check $?
 
@@ -36,6 +36,9 @@ func_stat_check $?
 
 func_print_head "create app directory"
 cd /app &>>$log_file
+func_stat_check $?
+
+func_print_head "install npm"
 npm install &>>$log_file
 func_stat_check $?
 
