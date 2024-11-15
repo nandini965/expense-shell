@@ -7,16 +7,9 @@ if [ -z "${mysql_root_password}" ]; then
   echo Input mysql root password is missing
   exit 1
   fi
-func_print_head "disable mysql"
-dnf module disable mysql -y &>>$log_file
-func_stat_check $?
-
- func_print_head "copy mysql repo"
-cp ${script_path}/mysql.repo /etc/yum.repos.d/mysql.repo &>>$log_file
-func_stat_check $?
 
 func_print_head "install mysql"
-dnf install mysql-community-server -y &>>$log_file
+dnf install mysql-server -y &>>$log_file
 func_stat_check $?
 
 func_print_head "restart mysql"
