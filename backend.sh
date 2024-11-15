@@ -54,7 +54,7 @@ func_stat_check $?
 
 
 func_print_head "install mysql"
-dnf install mysql -y &>>$log_file
+dnf install mysql-server -y &>>$log_file
 func_stat_check $?
 
 func_print_head "load schema"
