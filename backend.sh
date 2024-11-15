@@ -31,6 +31,9 @@ func_stat_check $?
 
 func_print_head "unzip app directory"
 cd /app &>>$log_file
+func_stat_check $?
+
+func_print_head "unzip app directory"
 unzip /tmp/backend.zip &>>$log_file
 func_stat_check $?
 
