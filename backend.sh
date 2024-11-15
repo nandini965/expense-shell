@@ -13,7 +13,7 @@ dnf module disable nodejs -y &>>$log_file
 func_stat_check $?
 
 func_print_head "install nodejs"
-dnf module enable nodejs:20 -y &>>$log_file
+dnf module enable nodejs:18 -y &>>$log_file
 dnf install nodejs -y &>>$log_file
 func_stat_check $?
 
@@ -26,6 +26,9 @@ if [ $? -ne 0 ]; then
 
 func_print_head "create application directory"
 mkdir /app &>>$log_file
+func_stat_check $?
+
+func_print_head "download backend application"
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip &>>$log_file
 func_stat_check $?
 
