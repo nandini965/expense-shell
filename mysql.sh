@@ -19,9 +19,6 @@ func_stat_check $?
 #func_print_head "add user and password"
 #mysql_secure_installation --set-root-pass "$mysql_root_password" &>>$log_file
 func_print_head "set root password"
-mysql --user=root <<EOF
-ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY '$mysql_root_password';
-FLUSH PRIVILEGES;
-EOF
+mysql --user=root --execute="ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY '${mysql_root_password}'; FLUSH PRIVILEGES;" &>>$log_file
 func_stat_check $?
 
