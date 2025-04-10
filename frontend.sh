@@ -3,7 +3,7 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
 func_print_head "install nginx"
-dnf install nginx -y &>>$log_file
+sudo apt-get install nginx -y &>>$log_file
 func_stat_check $?
 
 func_print_head " copy configuration file "

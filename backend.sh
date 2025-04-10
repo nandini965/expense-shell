@@ -13,7 +13,7 @@ dnf module disable nodejs -y &>>$log_file
 func_stat_check $?
 
 func_print_head "install nodejs"
-dnf module enable nodejs:18 -y &>>$log_file
+dnbash backend.shf module enable nodejs:18 -y &>>$log_file
 dnf install nodejs -y &>>$log_file
 func_stat_check $?
 
